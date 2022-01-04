@@ -1,4 +1,4 @@
-def call(def config=[:]) {
+def call() {
 
 sh '''
     stage_time=$(date '+%d/%m/%Y %H:%M:%S')
