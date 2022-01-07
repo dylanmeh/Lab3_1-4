@@ -3,5 +3,7 @@ def call() {
         if (buildCauseInfo)  {
             def unitTestEnable = buildCauseInfo.event.unitTestEnable
             return unitTestEnable
-        }        
+        }
+        return "N/A"
+                
 }
