@@ -7,3 +7,7 @@ String getTriggerCauseEvent() {
     }
     return "N/A"
 }
+
+static void main(String[] args) {
+println(artifactId)
+}
