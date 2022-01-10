@@ -11,5 +11,5 @@ String getTriggerCauseEvent() {
 }
 
 static void main(String[] args) {
-println getTriggerCauseEvent()
+    println getTriggerCauseEvent()
 }
