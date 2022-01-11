@@ -3,9 +3,10 @@ String getTriggerCauseEvent() {
     println "retrieving payload"
     if (buildCauseInfo && buildCauseInfo[0])  {
         println "inside of conditional statement"
-        String artifactId = buildCauseInfo[0].event.environment
-        println "${artifactId}"
-        return artifactId         
+        String environment = buildCauseInfo[0].event.environment
+        String unit_test = buildCauseInfo[0].event.unitTestEnable
+        println "${unit_test}"
+        return unitTestEnable         
     }
     return "N/A"
 }
