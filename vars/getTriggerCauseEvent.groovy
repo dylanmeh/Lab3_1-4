@@ -5,7 +5,7 @@ String getTriggerCauseEvent() {
         println "inside of conditional statement"
         String environment = buildCauseInfo[0].event.environment
         String unitTestEnable = buildCauseInfo[0].event.unitTestEnable
-        println "${unit_test}"
+        println "${unitTestEnable}"
         return unitTestEnable         
     }
     return "N/A"
