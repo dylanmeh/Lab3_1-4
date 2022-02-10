@@ -6,3 +6,4 @@ spec:
     image: 'maven:3.8.3-jdk-11'
     command:
     - cat
+    tty: true    
