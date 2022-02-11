@@ -1,4 +1,4 @@
-def call() {
+def call(Map pipelineParams) {
     pipeline {
         agent {
             kubernetes {
@@ -17,12 +17,17 @@ spec:
             }
         }   
         stages {
+            stage('scm checkout') {
+                steps {
+                    git branch: pipelineParams.branch, credentialsId: GitHub_Creds, url: pipelineParams.scmUrl
+                }
+            }
             stage('testing pod yaml in resources directory of shared lib') {
                 steps {
                     sh 'mvn --version'
                 }
             }
-            stage ('build') {
+            stage('build') {
                 steps {
                     sh 'mvn -B -DskipTests clean package'
                 }
@@ -39,17 +44,17 @@ spec:
             }
             stage('deploy to dev') {
                 steps {
-                    sh 'echo "deploy to dev"'
+                    sh 'echo "deploy to pipelineParams.developmentServer, pipelineParams.serverPort"'
                 }
             }
             stage('deploy to staging') {
                 steps {
-                    sh 'echo "deploy to staging"'
+                    sh 'echo "deploy to pipelineParams.stagingServer, pipelineParams.serverPort"'
                 }
             }
             stage('deploy to prod') {
                 steps {
-                    sh 'echo "deploy to prod"'
+                    sh 'echo "deploy to pipelineParams.prodServer, pipelineParams.serverPort"'
                 }
             }
         }
@@ -57,9 +62,8 @@ spec:
             failure {
                 emailext (
                     subject: "Job Failure": Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                    body: """Job Failure: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
-                    Check console output at ${env.BUILD_URL}""",
-                    to: 'ted.fenn@concanon.com'
+                    body: "${env.BUILD_URL}"
+                    to: pipelineParams.email
                 )    
             }
         }
