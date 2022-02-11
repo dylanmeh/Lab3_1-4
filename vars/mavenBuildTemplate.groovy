@@ -62,7 +62,7 @@ spec:
             failure {
                 emailext (
                 subject: "Job Failure: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: "${env.BUILD_URL}"
+                body: "${env.BUILD_URL}",
                 to: pipelineParams.email
                 )    
             }
