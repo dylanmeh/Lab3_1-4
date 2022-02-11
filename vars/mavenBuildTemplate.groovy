@@ -19,7 +19,7 @@ spec:
         stages {
             stage('scm checkout') {
                 steps {
-                    git branch: pipelineParams.branch, credentialsId: GitHub_Creds, url: pipelineParams.scmUrl
+                    git branch: pipelineParams.branch, credentialsId: 'GitHub_Creds', url: pipelineParams.scmUrl
                 }
             }
             stage('testing pod yaml in resources directory of shared lib') {
