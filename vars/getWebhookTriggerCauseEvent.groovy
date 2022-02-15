@@ -7,7 +7,8 @@ String getWebhookTriggerCauseEvent() {
         String repo_url = buildCauseInfo[0].event.repository.url
         println "${webhook_branch}"
         println "${repo_url}"
-        return ['webhook_branch', 'repo_url']         
+        return webhook_branch
+        return repo_url         
     }
     return "N/A"
 }    
