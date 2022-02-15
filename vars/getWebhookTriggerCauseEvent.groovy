@@ -1,4 +1,4 @@
-String getTriggerCauseEvent() {
+String getWebhookTriggerCauseEvent() {
     def buildCauseInfo = currentBuild.getBuildCauses("com.cloudbees.jenkins.plugins.pipeline.events.EventTriggerCause")
     println "retrieving payload"
     if (buildCauseInfo && buildCauseInfo[0])  {
