@@ -9,12 +9,6 @@ String getWebhookTriggerCauseEvent() {
         println "${repo_url}"
         return webhook_branch
         return repo_url         
-    } else {
-        println "inside of else part of conditional statement"
-        String webhook_branch = buildCauseInfo[0].event.ref
-        String repo_url = buildCauseInfo[0].event.repository.url
-        println "${repo_url}"
-        return repo_url
     }
     return "N/A"
 }    
